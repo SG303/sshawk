@@ -70,16 +70,14 @@ def main():
         raise
         sys.exit(1)
 
-    print(network)
-
     for ip in network.hosts():
         device = NetworkDevice(ip, args.user, args.password, "huawei_vrp")
         with device as dev:
             try:
                 output = dev.send_command('display startup')
-                print(f'Output from {ip}: {output}')
+                logging.info(f'Output from {ip}: {output}')
             except Exception as e:
-                print(f"Error with {ip}: {e}")
+                logging.error(f"Error with {ip}: {e}")
 
 if __name__ == "__main__":
     main()
