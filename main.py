@@ -16,6 +16,10 @@ class NetworkDevice:
         }
         self.connection = None
 
+    @classmethod
+    def autodetect(cls):
+        print("test")
+
     def connect(self):
         try: 
             self.connection = ConnectHandler(**self.device_params)
@@ -31,7 +35,7 @@ class NetworkDevice:
         if not self.connection:
             raise ValueError('Not connected to device. Call connect() first.')
         try:
-            output =  self.connection.send_command(command)
+            output = self.connection.send_command(command, use_textfsm=True)
             logging.info(f'Executed command: {command}')
             return output
         except Exception as e:
@@ -50,7 +54,29 @@ class NetworkDevice:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.disconnect()
-    
+
+class HuaweiVrpSwitch(NetworkDevice):
+    def __init__(self, host, username, password, device_type='huawei'):
+        super().__init__(host, username, password, device_type)
+
+        self.vendor = 'Huawei'
+        self.platform = 'VRP'
+
+    def  get_serial_number(self, software_version):
+        """
+        Docstring for get_serial_number
+        
+        :param software_version: Either V200 or V600
+        """
+        if software_version == "V200":
+            output = self.send_command("display device manufacturer-info")
+        elif software_version == "V600":
+            output = self.send_command("display device esn")
+        else:
+            raise ValueError(f'Unsupported software Version: {software_version}')
+        return output
+
+            
 
 def main():
     parser = argparse.ArgumentParser(description='Network Switches Dicovery Tool')
@@ -68,13 +94,12 @@ def main():
     except ValueError as e:
         logging.error(f'Error {e}')
         raise
-        sys.exit(1)
 
     for ip in network.hosts():
-        device = NetworkDevice(ip, args.user, args.password, "huawei_vrp")
+        device = HuaweiVrpSwitch(ip, args.user, args.password)
         with device as dev:
             try:
-                output = dev.send_command('display startup')
+                output = dev.get_serial_number('V600')
                 logging.info(f'Output from {ip}: {output}')
             except Exception as e:
                 logging.error(f"Error with {ip}: {e}")
