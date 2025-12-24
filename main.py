@@ -71,7 +71,7 @@ class HuaweiVrpSwitch(NetworkDevice):
         if software_version == "V200":
             output = self.send_command("display device manufacturer-info")
         elif software_version == "V600":
-            output = self.send_command("display device esn")
+            output = self.send_command("display device")
         else:
             raise ValueError(f'Unsupported software Version: {software_version}')
         return output
