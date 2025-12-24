@@ -16,6 +16,30 @@ class NetworkDevice:
         }
         self.connection = None
 
+    VENDOR_MAP = {}
+    
+    @classmethod
+    def from_ip(cls, ip_input, device_type=None, **kwargs):
+        network = ipaddress.ip_network(ip_input, strict=False)
+        # Implement error handling
+        hosts = list(network.hosts()) or [network.network_address]
+
+        devices = []
+        for host in hosts:
+            target_class = cls
+            current_type = device_type
+
+            if not current_type or current_type == 'autodetect':
+                current_type = cls.detect_vendor(str(host), **kwargs)
+
+            if current_type in cls.VENDOR_MAP:
+                target_class = cls.VENDOR_MAP[current_type]
+
+            devices.append(target_class(host=str(host), device_type=current_type, **kwargs))
+
+        return devices
+
+
     @classmethod
     def autodetect(cls):
         print("test")
@@ -76,7 +100,7 @@ class HuaweiVrpSwitch(NetworkDevice):
             raise ValueError(f'Unsupported software Version: {software_version}')
         return output
 
-            
+NetworkDevice.VENDOR_MAP['huawei'] = HuaweiVrpSwitch
 
 def main():
     parser = argparse.ArgumentParser(description='Network Switches Dicovery Tool')
@@ -89,20 +113,22 @@ def main():
     logging.basicConfig(level=logging.INFO)
 
 
-    try:   
-        network = ipaddress.IPv4Network(args.ip)
-    except ValueError as e:
-        logging.error(f'Error {e}')
-        raise
 
-    for ip in network.hosts():
-        device = HuaweiVrpSwitch(ip, args.user, args.password)
+    devices = NetworkDevice.from_ip(ip_input=args.ip, device_type='huawei', username=args.user, password=args.password)
+        
+    for device in devices:
         with device as dev:
             try:
-                output = dev.get_serial_number('V600')
-                logging.info(f'Output from {ip}: {output}')
+                if isinstance(dev, HuaweiVrpSwitch):
+                    output = dev.get_serial_number('V600')
             except Exception as e:
-                logging.error(f"Error with {ip}: {e}")
+                logging.error (f'Failed to get data from {dev.device_params['host']}: {e}')                    
+
+     
+    print(output)
+
+    if dev.vendor == 'Huawei':
+        print(dev.vendor)
 
 if __name__ == "__main__":
     main()
