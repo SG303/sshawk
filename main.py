@@ -3,6 +3,7 @@ import ipaddress
 import logging
 
 import netmiko
+from netmiko.ssh_autodetect import SSHDetect
 from netmiko import ConnectHandler
 
 class NetworkDevice:
@@ -32,7 +33,7 @@ class NetworkDevice:
             current_type = device_type
 
             if not current_type or current_type == 'autodetect':
-                current_type = cls.detect_vendor(str(host), **kwargs)
+                current_type = cls.get_vendor(str(host), **kwargs)
 
             if current_type in cls.VENDOR_MAP:
                 target_class = cls.VENDOR_MAP[current_type]
@@ -41,10 +42,11 @@ class NetworkDevice:
 
         return devices
 
-
     @classmethod
-    def autodetect(cls):
-        print("test")
+    def get_vendor(cls, host, **kwargs):
+        guesser = SSHDetect(host, device_type='autodetect', **kwargs)
+        best_match = guesser.autodetect()
+        return best_match
 
     def connect(self):
         try:
@@ -116,8 +118,10 @@ def main():
 
 
 
-    devices = NetworkDevice.from_ip(ip_input=args.ip, device_type='huawei', username=args.user, password=args.password)
-        
+    devices = NetworkDevice.from_ip(ip_input=args.ip, device_type='autodetect', username=args.user, password=args.password)
+
+    print(devices)
+
     for device in devices:
         with device as dev:
             try:
