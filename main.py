@@ -1,6 +1,5 @@
 import argparse
 import ipaddress
-import sys
 import logging
 
 import netmiko
@@ -15,6 +14,9 @@ class NetworkDevice:
             'device_type': device_type,
         }
         self.connection = None
+
+    def __repr__(self):
+        return f'<{self.__class__.__name__} host={self.device_params["host"]}>'
 
     VENDOR_MAP = {}
     
@@ -45,7 +47,7 @@ class NetworkDevice:
         print("test")
 
     def connect(self):
-        try: 
+        try:
             self.connection = ConnectHandler(**self.device_params)
             logging.info(f"Connected to {self.device_params['host']}")
         except netmiko.NetmikoAuthenticationException:
@@ -86,7 +88,7 @@ class HuaweiVrpSwitch(NetworkDevice):
         self.vendor = 'Huawei'
         self.platform = 'VRP'
 
-    def  get_serial_number(self, software_version):
+    def get_serial_number(self, software_version):
         """
         Docstring for get_serial_number
         
@@ -103,8 +105,8 @@ class HuaweiVrpSwitch(NetworkDevice):
 NetworkDevice.VENDOR_MAP['huawei'] = HuaweiVrpSwitch
 
 def main():
-    parser = argparse.ArgumentParser(description='Network Switches Dicovery Tool')
-    parser.add_argument('-i', '--ip', type=str, help='IP address or range of th network switch', required=True)
+    parser = argparse.ArgumentParser(description='Network Switches Discovery Tool')
+    parser.add_argument('-i', '--ip', type=str, help='IP address or range of the network switch', required=True)
     parser.add_argument('-u', '--user', type=str, help='Name of the SSH User which will be used to connect to the switch', required=True)
     parser.add_argument('-p', '--password', type=str, help='Password of SSH USer', required=True)
 
@@ -122,10 +124,11 @@ def main():
                 if isinstance(dev, HuaweiVrpSwitch):
                     output = dev.get_serial_number('V600')
             except Exception as e:
-                logging.error (f'Failed to get data from {dev.device_params['host']}: {e}')                    
+                logging.error(f'Failed to get data from {dev.device_params["host"]}: {e}')                    
 
      
     print(output)
+    print(devices)
 
     if dev.vendor == 'Huawei':
         print(dev.vendor)
