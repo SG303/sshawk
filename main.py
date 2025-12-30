@@ -1,6 +1,7 @@
 import argparse
 import ipaddress
 import logging
+import os
 
 import netmiko
 from netmiko.ssh_autodetect import SSHDetect
@@ -34,6 +35,7 @@ class NetworkDevice:
 
             if not current_type or current_type == 'autodetect':
                 current_type = cls.get_vendor(str(host), **kwargs)
+                logging.info(f"Autodetected device type: {current_type}")
 
             if current_type in cls.VENDOR_MAP:
                 target_class = cls.VENDOR_MAP[current_type]
@@ -63,7 +65,25 @@ class NetworkDevice:
         if not self.connection:
             raise ValueError('Not connected to device. Call connect() first.')
         try:
-            output = self.connection.send_command(command, use_textfsm=True)
+            logging.info(f"Sending command: {command} with device_type: {self.connection.device_type}")
+            
+            custom_template = os.path.join('custom_templates', f'{self.connection.device_type}_{command.replace(" ", "_")}.textfsm')
+            
+            if os.path.exists(custom_template):
+                logging.info(f"Using custom template: {custom_template}")
+                output = self.connection.send_command(command, use_textfsm=True, textfsm_template=custom_template)
+            else:
+                output = self.connection.send_command(command, use_textfsm=True)
+            
+            # Check if TextFSM parsing was successful
+            # If parsing fails, netmiko returns raw string instead of list
+            if isinstance(output, str):
+                logging.warning(f'TextFSM parsing failed for command "{command}". No template found or parsing error. Returning raw output.')
+                logging.debug(f"Raw output: {output}")
+            else:
+                logging.info(f'TextFSM successfully parsed command: {command}')
+                logging.debug(f"Structured data: {output}")
+            
             logging.info(f'Executed command: {command}')
             return output
         except Exception as e:
@@ -84,7 +104,11 @@ class NetworkDevice:
         self.disconnect()
 
 class HuaweiVrpSwitch(NetworkDevice):
-    def __init__(self, host, username, password, device_type='huawei'):
+    def __init__(self, host, username, password, device_type='huawei_vrp'):
+        # Ensure we use huawei_vrp for ntc-templates compatibility
+        if device_type == 'huawei':
+            logging.info("Changing device_type from 'huawei' to 'huawei_vrp' for ntc-templates compatibility")
+            device_type = 'huawei_vrp'
         super().__init__(host, username, password, device_type)
 
         self.vendor = 'Huawei'
@@ -99,12 +123,31 @@ class HuaweiVrpSwitch(NetworkDevice):
         if software_version == "V200":
             output = self.send_command("display device manufacturer-info")
         elif software_version == "V600":
-            output = self.send_command("display device")
+            output = self.send_command("display device esn")
         else:
             raise ValueError(f'Unsupported software Version: {software_version}')
         return output
 
+    def get_software_release():
+        print('display startup')
+
+    def get_hostanme():
+        print('display sysname')
+
+    def get_vlans():
+        print('display vlan')
+    
+    def get_interfaces():
+        print('display port vlan')
+    
+    def get_interfaces_brief():
+        print('display interface brief')
+    
+    def get_config():
+        print('display current-configuration')
+
 NetworkDevice.VENDOR_MAP['huawei'] = HuaweiVrpSwitch
+NetworkDevice.VENDOR_MAP['huawei_vrp'] = HuaweiVrpSwitch
 
 def main():
     parser = argparse.ArgumentParser(description='Network Switches Discovery Tool')
@@ -116,8 +159,6 @@ def main():
 
     logging.basicConfig(level=logging.INFO)
 
-
-
     devices = NetworkDevice.from_ip(ip_input=args.ip, device_type='autodetect', username=args.user, password=args.password)
 
     print(devices)
@@ -127,17 +168,13 @@ def main():
             try:
                 if isinstance(dev, HuaweiVrpSwitch):
                     output = dev.get_serial_number('V600')
+                    import json
+                    print(json.dumps(output, indent=4))
             except Exception as e:
-                logging.error(f'Failed to get data from {dev.device_params["host"]}: {e}')                    
+                logging.error(f'Failed to get data from {dev.device_params["host"]}: {e}')
 
      
-    print(output)
     print(devices)
-
-    if dev.vendor == 'Huawei':
-        print(dev.vendor)
 
 if __name__ == "__main__":
     main()
-
-
