@@ -1,0 +1,14 @@
+Value SYSTEM_SOFTWARE (\S+)
+Value MODEL (.+)
+Value UPTIME (.+)
+Value PATCH_VERSION (\S+)
+
+Start
+  ^Huawei\s+(YunShan\s+OS|Versatile\s+Routing\s+Platform)\s+Software
+  ^Version\s+\S+\s+\(\S+\s+${SYSTEM_SOFTWARE}\)
+  ^Copyright\s+\(C\)\s+.*Huawei\s+Technologies\s+Co\.,\s+Ltd\.
+  ^(HUAWEI|Huawei|Quidway)\s+.*\s+uptime\s+is\s+${UPTIME}
+  ^Patch\s+Version\s*:\s+${PATCH_VERSION}
+  ^3\.Board\s+Type\s+:\s+${MODEL}
+  ^\s*$$
+  ^. -> Continue
