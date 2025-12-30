@@ -1,0 +1,7 @@
+Value SLOT (\d+)
+Value SERIAL_NUMBER (\S+)
+
+Start
+  ^\s*ESN\s+of\s+slot\s+${SLOT}:\s+${SERIAL_NUMBER} -> Record
+  ^\s*$$
+  ^. -> Continue
