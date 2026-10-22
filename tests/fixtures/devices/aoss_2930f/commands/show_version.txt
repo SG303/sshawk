@@ -1,0 +1,8 @@
+Image stamp:    /ws/swbuildm/rel_ukiah_qaoff/code/build/bom(swbuildm_rel_ukiah_qaoff_rel_ukiah)
+                Jan  7 2021 11:55:49
+                WC.16.10.0012
+                1825
+Boot Image:     Primary
+
+Boot ROM Version:    WC.17.02.0006
+Active Boot ROM:     Primary

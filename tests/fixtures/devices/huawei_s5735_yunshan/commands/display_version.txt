@@ -1,0 +1,6 @@
+Huawei YunShan OS
+Version 1.22.0.1 (S5735 V600R022C10SPC500)
+Copyright (C) 2021-2022 Huawei Technologies Co., Ltd.
+HUAWEI S5735-S48T4X uptime is 0 week, 2 days, 3 hours, 10 minutes
+
+Patch Version: V600R022SPH120

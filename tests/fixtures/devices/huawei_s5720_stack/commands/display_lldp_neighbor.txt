@@ -1,0 +1,20 @@
+GigabitEthernet0/0/24 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC Address
+Chassis ID     :b0a3-f2ab-cd01
+Port ID type   :Interface name
+Port ID        :GigabitEthernet0/0/1
+Port description    :To-Dist
+System name         :HW-ACC-02
+System description  :S5735-S48T4X
+Huawei YunShan OS
+Version 1.22.0.1 (S5735 V600R022C10SPC500)
+Copyright (C) 2021-2022 Huawei Technologies Co., Ltd.
+System capabilities supported   :bridge router
+System capabilities enabled     :bridge router
+Management address type  :ipv4
+Management address : 127.0.0.14
+Expired time   :104s
+
+Port VLAN ID(PVID)  :1
