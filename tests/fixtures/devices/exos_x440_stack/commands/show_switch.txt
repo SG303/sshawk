@@ -1,0 +1,28 @@
+
+SysName:          EXT-STACK-01
+SysLocation:      Serverraum 1
+SysContact:       support@extremenetworks.com, +1 888 257 3000
+System MAC:       00:04:96:9B:A1:B2
+System Type:      X440G2-48p-10G4 (Stack)
+
+SysHealth check:  Enabled (Normal)
+Recovery Mode:    All
+System Watchdog:  Enabled
+
+Current Time:     Wed Oct 22 10:00:00 2026
+Timezone:         [Auto DST Disabled] GMT Offset: 60 minutes, name is MEZ.
+Boot Time:        Mon Jun  1 08:00:00 2026
+Boot Count:       42
+Next Reboot:      None scheduled
+System UpTime:    142 days 2 hours 0 minutes 12 seconds 
+
+Slot:             Slot-1                     Slot-2                     
+Current State:    MASTER                     BACKUP (In Sync)           
+
+Image Selected:   primary                    primary                    
+Image Booted:     primary                    primary                    
+Primary ver:      31.7.1.4                   31.7.1.4                   
+Secondary ver:    30.7.1.1                   30.7.1.1                   
+
+Config Selected:  primary.cfg                                        
+Config Booted:    primary.cfg                                        

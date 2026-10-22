@@ -1,0 +1,14 @@
+NAME: "c93xx Stack", DESCR: "c93xx Stack"
+PID: C9300-48P         , VID: V02  , SN: FOC2345X0AB
+
+NAME: "Switch 1", DESCR: "C9300-48P"
+PID: C9300-48P         , VID: V02  , SN: FOC2345X0AB
+
+NAME: "Switch 1 - Power Supply A", DESCR: "Switch 1 - Power Supply A"
+PID: PWR-C1-715WAC     , VID: V02  , SN: LIT23451ABC
+
+NAME: "Switch 2", DESCR: "C9300-48P"
+PID: C9300-48P         , VID: V02  , SN: FOC2346X1CD
+
+NAME: "Te1/1/1", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V02  , SN: AVD2345ABCD

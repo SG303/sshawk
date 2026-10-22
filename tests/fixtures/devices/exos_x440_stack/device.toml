@@ -1,0 +1,17 @@
+# Synthetic sample (ExtremeXOS 31.7 SummitStack of two X440-G2) - replace with real captures.
+platform = "extreme_exos"
+hostname = "EXT-STACK-01"
+
+[expected]
+vendor = "Extreme"
+os = "EXOS"
+hostname = "EXT-STACK-01"
+model = "X440G2-48p-10G4"
+version = "31.7.1.4"
+serial = "1918N-41234"
+uptime = "142 days 2 hours 0 minutes 12 seconds"
+members = [
+  { slot = "1", role = "active", model = "X440G2-48p-10G4", serial = "1918N-41234", version = "31.7.1.4" },
+  { slot = "2", role = "standby", model = "X440G2-48p-10G4", serial = "1918N-41235", version = "31.7.1.4" },
+]
+neighbors = 1

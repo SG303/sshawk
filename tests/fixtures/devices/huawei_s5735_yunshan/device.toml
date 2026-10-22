@@ -1,0 +1,16 @@
+# Synthetic sample (YunShan OS V600R022 on S5735-S) - replace with real captures.
+platform = "huawei"
+hostname = "HW-ACC-02"
+
+[expected]
+vendor = "Huawei"
+os = "YunShan"
+hostname = "HW-ACC-02"
+model = "S5735-S48T4X"
+version = "V600R022C10SPC500"
+serial = "102012345678"
+uptime = "0 week, 2 days, 3 hours, 10 minutes"
+members = [
+  { slot = "1", role = "active", model = "S5735-S48T4X", serial = "102012345678", version = "V600R022C10SPC500" },
+]
+neighbors = 0

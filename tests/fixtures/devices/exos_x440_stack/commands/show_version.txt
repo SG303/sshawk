@@ -1,0 +1,16 @@
+Slot-1      : 800616-00-06 1918N-41234 Rev 6.0 BootROM: 2.0.1.8    IMG: 31.7.1.4  
+Slot-2      : 800616-00-06 1918N-41235 Rev 6.0 BootROM: 2.0.1.8    IMG: 31.7.1.4  
+Slot-3      : 
+Slot-4      : 
+Slot-5      : 
+Slot-6      : 
+Slot-7      : 
+Slot-8      : 
+PSU-1       : Internal PSU-1 800616-00-06 1918N-41234
+PSU-2       : Internal PSU-2 800616-00-06 1918N-41235
+
+Image   : ExtremeXOS version 31.7.1.4 by release-manager
+          on Fri Jun 10 14:56:07 EDT 2022
+BootROM : Default 2.0.1.8    Alt 2.0.1.8
+Diagnostics : 5.11
+Certified Version : EXOS Linux  4.9.217, Extreme Networks FIPS Object Module v2.0.16

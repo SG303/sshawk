@@ -1,0 +1,16 @@
+# Synthetic sample (VOSS 8.1 on VSP 4450GSX) - format NOT verified, replace with real captures.
+platform = "extreme_vsp"
+hostname = "VSP-CORE-01"
+
+[expected]
+vendor = "Extreme"
+os = "VOSS"
+hostname = "VSP-CORE-01"
+model = "VSP-4450GSX-PWR+"
+version = "8.1.5.0"
+serial = "14JP3000ABCD"
+uptime = "45 day(s), 03:12:44"
+members = [
+  { slot = "1", role = "active", model = "VSP-4450GSX-PWR+", serial = "14JP3000ABCD", version = "8.1.5.0" },
+]
+neighbors = 1

@@ -1,0 +1,17 @@
+# Synthetic sample (AOS-CX 10.10 on 6300M VSF of two) - replace with real captures.
+platform = "aruba_aoscx"
+hostname = "CX-ACC-01"
+
+[expected]
+vendor = "HPE Aruba"
+os = "AOS-CX"
+hostname = "CX-ACC-01"
+model = "JL659A 6300M 48SR5 CL6 PoE 4SFP56 Swch"
+version = "FL.10.10.1080"
+serial = "SG12KX0001"
+uptime = "3 weeks, 2 days, 4 hours, 10 minutes"
+members = [
+  { slot = "1", role = "active", model = "JL659A", serial = "SG12KX0001", version = "FL.10.10.1080" },
+  { slot = "2", role = "standby", model = "JL659A", serial = "", version = "FL.10.10.1080" },
+]
+neighbors = 1

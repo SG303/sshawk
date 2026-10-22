@@ -1,0 +1,10 @@
+Slots    Type                 Configured           State       Ports  Flags
+-------------------------------------------------------------------------------
+Slot-1   X440G2-48p-10G4      X440G2-48p-10G4      Operational   54  M  
+Slot-2   X440G2-48p-10G4      X440G2-48p-10G4      Operational   54  M  
+Slot-3                                             Empty          0     
+Slot-4                                             Empty          0     
+
+Flags  : M - Backplane link to Master is Active
+         B - Backplane link to Backup is also Active
+         D - Slot Disabled

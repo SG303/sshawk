@@ -1,0 +1,17 @@
+Hostname                    : CX-ACC-01
+System Description          : FL.10.10.1080
+System Contact              : 
+System Location             : 
+Vendor                      : Aruba
+Product Name                : JL659A 6300M 48SR5 CL6 PoE 4SFP56 Swch
+Chassis Serial Nbr          : SG12KX0001
+Base MAC Address            : 88:3a:30:aa:bb:cc
+ArubaOS-CX Version          : FL.10.10.1080
+
+Time Zone                   : Europe/Zurich
+
+Up Time                     : 3 weeks, 2 days, 4 hours, 10 minutes
+CPU Util (%)                : 4
+CPU Util (%) avg 1 min      : 4
+CPU Util (%) avg 5 min      : 4
+Memory Usage (%)            : 24

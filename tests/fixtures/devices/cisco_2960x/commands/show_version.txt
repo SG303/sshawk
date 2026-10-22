@@ -1,0 +1,56 @@
+Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E8, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2023 by Cisco Systems, Inc.
+Compiled Fri 21-Apr-23 05:32 by mcpre
+
+ROM: Bootstrap program is C2960X boot loader
+BOOTLDR: C2960X Boot Loader (C2960X-HBOOT-M) Version 15.2(7r)E, RELEASE SOFTWARE (fc1)
+
+SW-ACC-01 uptime is 3 weeks, 1 day, 2 hours, 11 minutes
+System returned to ROM by power-on
+System restarted at 08:12:44 CET Mon Sep 29 2026
+System image file is "flash:c2960x-universalk9-mz.152-7.E8.bin"
+Last reload reason: power-on
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+
+cisco WS-C2960X-48FPD-L (APM86XXX) processor (revision V08) with 524288K bytes of memory.
+Processor board ID FOC1932X2EF
+Last reset from power-on
+1 Virtual Ethernet interface
+1 FastEthernet interface
+48 Gigabit Ethernet interfaces
+2 Ten Gigabit Ethernet interfaces
+The password-recovery mechanism is enabled.
+
+512K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : 70:10:5C:11:22:80
+Motherboard assembly number     : 73-15783-07
+Power supply part number        : 341-0528-02
+Motherboard serial number       : FOC19321ABC
+Power supply serial number      : LIT19300XYZ
+Model revision number           : D0
+Motherboard revision number     : A0
+Model number                    : WS-C2960X-48FPD-L
+Daughterboard assembly number   : 73-14200-03
+Daughterboard serial number     : FOC19321DEF
+System serial number            : FOC1932X2EF
+Top Assembly Part Number        : 68-100000-05
+Top Assembly Revision Number    : B0
+Version ID                      : V05
+CLEI Code Number                : CMM1N00DRA
+Daughterboard revision number   : A0
+Hardware Board Revision Number  : 0x14
+
+
+Switch Ports Model                     SW Version            SW Image                 
+------ ----- -----                     ----------            ----------               
+*    1 52    WS-C2960X-48FPD-L         15.2(7)E8             C2960X-UNIVERSALK9-M     
+
+
+Configuration register is 0xF

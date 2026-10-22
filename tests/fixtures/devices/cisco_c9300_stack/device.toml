@@ -1,0 +1,17 @@
+# Synthetic sample (format from IOS-XE 17.9 docs/experience) - replace with real captures.
+platform = "cisco_ios"
+hostname = "SW-CORE-01"
+
+[expected]
+vendor = "Cisco"
+os = "IOS-XE"
+hostname = "SW-CORE-01"
+model = "C9300-48P"
+version = "17.09.04a"
+serial = "FOC2345X0AB"
+uptime = "1 year, 12 weeks, 3 days, 4 hours, 27 minutes"
+members = [
+  { slot = "1", role = "active", model = "C9300-48P", serial = "FOC2345X0AB", version = "17.09.04a" },
+  { slot = "2", role = "member", model = "C9300-48P", serial = "FOC2346X1CD", version = "17.09.04a" },
+]
+neighbors = 2

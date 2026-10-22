@@ -1,0 +1,23 @@
+-------------------------
+Device ID: SW-CORE-01.example.local
+Entry address(es): 
+  IP address: 127.0.0.11
+Platform: cisco C9300-48P,  Capabilities: Router Switch IGMP 
+Interface: TenGigabitEthernet1/0/1,  Port ID (outgoing port): TenGigabitEthernet1/1/1
+Holdtime : 151 sec
+
+Version :
+Cisco IOS Software [Cupertino], Catalyst L3 Switch Software (CAT9K_IOSXE), Version 17.9.4a, RELEASE SOFTWARE (fc3)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2023 by Cisco Systems, Inc.
+Compiled Fri 20-Oct-23 10:44 by mcpre
+
+advertisement version: 2
+VTP Management Domain: ''
+Native VLAN: 1
+Duplex: full
+Management address(es): 
+  IP address: 127.0.0.11
+
+
+Total cdp entries displayed : 1

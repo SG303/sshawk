@@ -1,0 +1,44 @@
+-------------------------
+Device ID: SW-ACC-01.example.local
+Entry address(es): 
+  IP address: 127.0.0.12
+Platform: cisco WS-C2960X-48FPD-L,  Capabilities: Switch IGMP 
+Interface: TenGigabitEthernet1/1/1,  Port ID (outgoing port): TenGigabitEthernet1/0/1
+Holdtime : 132 sec
+
+Version :
+Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E8, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2023 by Cisco Systems, Inc.
+Compiled Fri 21-Apr-23 05:32 by mcpre
+
+advertisement version: 2
+VTP Management Domain: ''
+Native VLAN: 1
+Duplex: full
+Management address(es): 
+  IP address: 127.0.0.12
+
+-------------------------
+Device ID: AP-OG1-01
+Entry address(es): 
+  IP address: 10.20.30.40
+Platform: cisco C9120AXI-E,  Capabilities: Router Trans-Bridge 
+Interface: GigabitEthernet1/0/10,  Port ID (outgoing port): GigabitEthernet0
+Holdtime : 170 sec
+
+Version :
+Cisco AP Software, ap3g3-k9w8 Version: 17.9.4.27
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 2014-2015 by Cisco Systems, Inc.
+
+advertisement version: 2
+Duplex: full
+Power drawn: 15.400 Watts
+Power request id: 1234, Power management id: 1
+Power request levels are:15400 0 0 0 0 
+Management address(es): 
+  IP address: 10.20.30.40
+
+
+Total cdp entries displayed : 2

@@ -1,0 +1,8 @@
+
+ Status and Counters - Module Information
+
+  Chassis: 2930F-24G-4SFP+ JL259A          Serial Number:   CN83HKX0AB
+
+  Slot  Module Description                       Serial Number    Status
+  ----- ---------------------------------------- ---------------- ----------
+

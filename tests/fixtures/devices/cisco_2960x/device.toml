@@ -1,0 +1,18 @@
+# Synthetic sample (classic IOS 15.2 on Catalyst 2960-X) - replace with real captures.
+# Starts in user exec mode; the enable secret is needed for privileged mode.
+platform = "cisco_ios"
+hostname = "SW-ACC-01"
+secret = "en4ble"
+
+[expected]
+vendor = "Cisco"
+os = "IOS"
+hostname = "SW-ACC-01"
+model = "WS-C2960X-48FPD-L"
+version = "15.2(7)E8"
+serial = "FOC1932X2EF"
+uptime = "3 weeks, 1 day, 2 hours, 11 minutes"
+members = [
+  { slot = "1", role = "active", model = "WS-C2960X-48FPD-L", serial = "FOC1932X2EF", version = "15.2(7)E8" },
+]
+neighbors = 1

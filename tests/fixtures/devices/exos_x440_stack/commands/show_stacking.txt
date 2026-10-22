@@ -1,0 +1,10 @@
+Stack Topology is a Daisy-Chain
+Active Topology is a Daisy-Chain
+Node MAC Address    Slot  Stack State  Role     Flags
+------------------  ----  -----------  -------  ---
+*00:04:96:9b:a1:b2  1     Active       Master   CA-
+ 00:04:96:9b:c3:d4  2     Active       Backup   CA-
+* - Indicates this node
+Flags:  (C) Candidate for this role, (c) temporarily not a candidate for this role
+        (A) Active Node
+        (O) node may be in Other stack
