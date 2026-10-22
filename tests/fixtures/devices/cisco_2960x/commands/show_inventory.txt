@@ -1,0 +1,5 @@
+NAME: "1", DESCR: "WS-C2960X-48FPD-L"
+PID: WS-C2960X-48FPD-L , VID: V05  , SN: FOC1932X2EF
+
+NAME: "Switch 1 - FlexStackPlus Module", DESCR: "Stacking Module"
+PID: C2960X-STACK      , VID: V02  , SN: FOC19320AAA

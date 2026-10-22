@@ -1,0 +1,20 @@
+
+ LLDP Remote Device Information Detail
+
+  Local Port   : 25
+  ChassisType  : mac-address
+  ChassisId    : 88 3a 30 aa bb cc
+  PortType     : local
+  PortId       : 1/1/1
+  SysName      : CX-ACC-01
+  System Descr : Aruba JL659A FL.10.10.1080
+  PortDescr    : 1/1/1
+  Pvid         : 1
+
+  System Capabilities Supported  : bridge, router
+  System Capabilities Enabled    : bridge, router
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 127.0.0.16
+

@@ -1,0 +1,10 @@
+MAC Address          : 88:3a:30:aa:bb:cc
+Secondary            : 2
+Topology             : Chain
+Status               : No Split
+Split Detection Method : None
+Mbr  Mac Address         type                 Status
+ID
+---  -------------------  -------------------- ---------------
+ 1   88:3a:30:aa:bb:cc    JL659A               Master
+ 2   88:3a:30:dd:ee:ff    JL659A               Standby

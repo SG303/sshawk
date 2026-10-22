@@ -1,0 +1,23 @@
+
+ Status and Counters - General System Information
+
+  System Name        : HP-2930F-01
+  System Contact     :
+  System Location    : Etage 2
+
+  MAC Age Time (sec) : 300
+
+  Time Zone          : 60
+  Daylight Time Rule : Middle-Europe-and-Portugal
+
+  Software revision  : WC.16.10.0012        Base MAC Addr      : 9c8cd8-aabb00
+  ROM Version        : WC.17.02.0006        Serial Number      : CN83HKX0AB
+
+  Up Time            : 112 days             Memory   - Total   : 339,738,624
+  CPU Util (%)       : 3                               Free    : 186,428,128
+
+  IP Mgmt  - Pkts Rx : 5,123,456            Packet   - Total   : 6600
+             Pkts Tx : 4,987,654            Buffers    Free    : 4300
+                                                       Lowest  : 4196
+                                                       Missed  : 0
+

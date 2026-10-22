@@ -1,0 +1,10 @@
+Stack mode: Service-port
+Stack topology type: Link
+Stack system MAC: 4c1f-cc11-2233
+MAC switch delay time: 10 min
+Stack reserved VLAN: 4093
+Slot of the active management port: --
+Slot#   Role        MAC address       Priority   Device type
+-------------------------------------------------------------
+0       Master      4c1f-cc11-2233    200        S5720-28X-PWR-SI-AC
+1       Standby     4c1f-cc44-5566    150        S5720-28X-PWR-SI-AC

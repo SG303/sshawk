@@ -1,0 +1,17 @@
+-----------------------------------------------------------------------------
+LLDP Port 1:49 detected 1 neighbor
+  Neighbor: 00:51:00:aa:bb:01/1/1, age 25 seconds
+    - Chassis ID type: MAC address (4); Chassis ID: 00:51:00:aa:bb:01
+      Port ID type: ifName (5); Port ID: "1/1"
+    - Time To Live: 120 seconds
+    - Port Description: "Port 1/1"
+    - System Name: "VSP-CORE-01"
+    - System Description: "VSP-4450GSX-PWR+ (8.1.5.0)"
+    - System Capabilities : "Bridge, Router"
+      Enabled Capabilities: "Bridge, Router"
+    - Management Address Subtype: IPv4 (1)
+      Management Address        : 127.0.0.15
+      Interface Number Subtype  : ifIndex (2)
+      Interface Number          : 1
+      Object ID String          : "1.3.6.1.4.1.1916.2.170"
+-----------------------------------------------------------------------------

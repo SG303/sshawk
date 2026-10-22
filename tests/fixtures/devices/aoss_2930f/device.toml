@@ -1,0 +1,16 @@
+# Synthetic sample (AOS-S 16.10 on 2930F standalone) - replace with real captures.
+platform = "hp_procurve"
+hostname = "HP-2930F-01"
+
+[expected]
+vendor = "HPE Aruba"
+os = "AOS-S"
+hostname = "HP-2930F-01"
+model = "2930F-24G-4SFP+ JL259A"
+version = "WC.16.10.0012"
+serial = "CN83HKX0AB"
+uptime = "112 days"
+members = [
+  { slot = "1", role = "active", model = "2930F-24G-4SFP+ JL259A", serial = "CN83HKX0AB", version = "WC.16.10.0012" },
+]
+neighbors = 1

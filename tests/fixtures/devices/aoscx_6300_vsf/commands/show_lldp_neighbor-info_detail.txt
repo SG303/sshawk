@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+Port                           : 1/1/49
+Neighbor Entries               : 1
+Neighbor Entries Deleted       : 0
+Neighbor Entries Dropped       : 0
+Neighbor Entries Aged-Out      : 0
+Neighbor System-Name           : SW-CORE-01
+Neighbor System-Description    : Cisco IOS Software [Cupertino], Catalyst L3 Switch Software (CAT9K_IOSXE), Version 17.9.4a
+Neighbor Chassis-ID            : a0:b4:39:aa:bb:00
+Neighbor Management-Address    : 127.0.0.11
+Chassis Capabilities Available : Bridge, Router
+Chassis Capabilities Enabled   : Bridge, Router
+Neighbor Port-ID               : Te1/1/2
+Neighbor Port-Desc             : TenGigabitEthernet1/1/2
+Neighbor Port VLAN ID          : 1
+TTL                            : 120
+--------------------------------------------------------------------------------

@@ -1,0 +1,17 @@
+# Synthetic sample (VRP V200R019 on S5720, stack of two) - replace with real captures.
+platform = "huawei"
+hostname = "HW-DIST-01"
+
+[expected]
+vendor = "Huawei"
+os = "VRP"
+hostname = "HW-DIST-01"
+model = "S5720-28X-PWR-SI-AC"
+version = "V200R019C10SPC500"
+serial = "2102351931P0K8000123"
+uptime = "120 days, 3 hours, 12 minutes"
+members = [
+  { slot = "0", role = "active", model = "S5720-28X-PWR-SI-AC", serial = "2102351931P0K8000123", version = "V200R019C10SPC500" },
+  { slot = "1", role = "standby", model = "S5720-28X-PWR-SI-AC", serial = "2102351931P0K8000456", version = "V200R019C10SPC500" },
+]
+neighbors = 1
