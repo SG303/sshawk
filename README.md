@@ -3,7 +3,8 @@
 Collect inventory data from network devices over SSH: hostname, model, serial numbers
 (per stack member), firmware version, uptime and CDP/LLDP neighbors. Point it at IP
 ranges, give it one or more credential sets, and get the result as Excel, CSV, JSON or
-an HTML report. sshawk only runs read-only `show`/`display` commands.
+an HTML report. The scanner only runs read-only `show`/`display` commands (for Cisco
+with a secret configured, it also enters enable mode).
 
 Supported platforms (detected automatically):
 
@@ -21,7 +22,8 @@ Supported platforms (detected automatically):
 **Portable (no Python needed):** download `sshawk-windows-x86_64.exe` or
 `sshawk-linux-x86_64` from the GitHub releases and copy it to the jump/management
 server. The Linux binary runs on glibc 2.28 or newer (RHEL/Rocky/Alma 8+, Debian 10+,
-Ubuntu 20.04+). Nothing else is needed, also no internet access.
+Ubuntu 20.04+). Nothing else is needed, also no internet access. Each release
+contains a `SHA256SUMS.txt` to verify the download.
 
 **With Python 3.13+:** `uv tool install git+https://github.com/SG303/sshawk` (or
 `pipx install ...`), or for development `uv sync` inside a clone.
@@ -45,19 +47,28 @@ Important options:
 
 | Option | Meaning |
 |---|---|
+| `-t FILE` | targets file, one entry per line. Repeatable |
 | `-u USER` | username, password is prompted. Repeat for several accounts |
 | `-c FILE` | credentials file (see below) |
 | `--enable` | also prompt for a Cisco enable secret |
 | `-o FILE` | output; format from the extension `.xlsx .csv .json .html`. Repeatable |
+| `-f FORMAT` | force the output format (`json csv xlsx html`) for a single `-o` |
+| `--title TEXT` | title of the HTML report, e.g. the customer name |
 | `-n` | also collect CDP/LLDP neighbors |
-| `--crawl` | follow neighbors' management IPs (`--depth`, `--scope`, `--exclude`) |
+| `--crawl` | follow neighbors' management IPs (`--depth` default 3, `--scope`, `--exclude`) |
 | `-w N` | parallel sessions (default 20) |
+| `-p PORT` | SSH port for targets without `:port` and for crawled neighbors (default 22) |
+| `--timeout SEC` | connect/login timeout (default 10) |
 | `-d TYPE` | skip autodetection, e.g. `-d huawei` |
 | `--save-raw DIR` | keep the raw command output per device |
 | `--all` | also list addresses where nothing answers on the SSH port |
+| `-v` / `-q` | more log output (`-vv` includes netmiko) / no progress or summary |
 
 Without `-u`/`-c`, sshawk uses `SSHAWK_USERNAME` / `SSHAWK_PASSWORD` /
 `SSHAWK_SECRET` from the environment, or asks for a username.
+
+Exit codes: `0` if at least one device was collected, `1` if none was, `2` for invalid
+input (bad target, unreadable credentials file, no credentials), `130` after Ctrl+C.
 
 ### Credentials
 
@@ -79,6 +90,9 @@ username = "admin"
 # no password key: prompted at start
 secret = "enable-secret"            # optional, Cisco only
 ```
+
+The password comes from `password_env` (recommended), from an inline `password`, or
+is prompted for when neither key is set. Inline passwords end up in plain text on disk.
 
 ### Outputs
 
@@ -116,8 +130,14 @@ with sshawk.connect("10.0.0.1", creds) as session:
     info = session.collect(neighbors=True)           # same data as a scan
 ```
 
-`scan()` never raises for single devices; check `device.status` (`ok`, `partial`,
-`auth_failed`, `unreachable`, `timeout`, `unsupported`, `error`).
+`scan()` takes the same options as the CLI as keyword arguments (the fields of
+`sshawk.ScanOptions`). It never raises for single devices; check `device.status` (`ok`,
+`partial`, `auth_failed`, `unreachable`, `timeout`, `unsupported`, `error`).
+
+`session.send()` sends the command you pass, so use it only with read-only commands
+if the devices should not be changed. The parsed template is `<platform>_<command>`,
+e.g. `cisco_ios_show_interfaces_status`; sshawk's own templates are checked first,
+then ntc-templates.
 
 ## How it works
 
@@ -135,6 +155,8 @@ with sshawk.connect("10.0.0.1", creds) as session:
 | VOSS | `show sys-info`, `show lldp neighbor` |
 | AOS-CX | `show system`, `show version`, `show vsf`, `show lldp neighbor-info detail` |
 | AOS-S | `show system`, `show modules`, `show stacking` / `show vsf`, `show lldp info remote-device detail`, `show cdp neighbors detail` |
+
+CDP/LLDP neighbors are only collected with `-n` or `--crawl`.
 
 If a device answers differently than expected, run with `--save-raw DIR` and use the
 files to improve the parser and add a test fixture.
@@ -162,3 +184,7 @@ packaging/build-linux.sh                         # Linux binary for old glibc (d
 
 GitHub Actions runs the tests on Linux and Windows and builds both binaries; pushing a
 `v*` tag publishes them as a release.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
