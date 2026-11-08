@@ -124,10 +124,10 @@ sshawk.export(devices, "inventory.xlsx")
 
 # Work with one device
 with sshawk.connect("10.0.0.1", creds) as session:
-    print(session.device_type)                       # e.g. "huawei"
-    print(session.send("display interface brief"))   # raw output
+    print(session.device_type)  # e.g. "huawei"
+    print(session.send("display interface brief"))  # raw output
     rows = session.send("show interfaces status", parse=True)  # TextFSM (ntc-templates)
-    info = session.collect(neighbors=True)           # same data as a scan
+    info = session.collect(neighbors=True)  # same data as a scan
 ```
 
 `scan()` takes the same options as the CLI as keyword arguments (the fields of

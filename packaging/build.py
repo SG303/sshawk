@@ -20,22 +20,31 @@ ROOT = Path(__file__).resolve().parent.parent
 def main() -> None:
     args = [
         str(ROOT / "packaging" / "entry.py"),
-        "--name", "sshawk",
+        "--name",
+        "sshawk",
         "--onefile",
         "--console",
         "--noconfirm",
         "--clean",
-        "--distpath", str(ROOT / "dist"),
-        "--workpath", str(ROOT / "build"),
-        "--specpath", str(ROOT / "build"),
+        "--distpath",
+        str(ROOT / "dist"),
+        "--workpath",
+        str(ROOT / "build"),
+        "--specpath",
+        str(ROOT / "build"),
         # TextFSM templates are data files loaded at runtime.
-        "--collect-data", "ntc_templates",
-        "--collect-data", "sshawk",
+        "--collect-data",
+        "ntc_templates",
+        "--collect-data",
+        "sshawk",
         # rich loads its unicode width tables dynamically.
-        "--collect-submodules", "rich._unicode_data",
+        "--collect-submodules",
+        "rich._unicode_data",
         # Not needed at runtime; keeps the binary smaller.
-        "--exclude-module", "tkinter",
-        "--exclude-module", "pytest",
+        "--exclude-module",
+        "tkinter",
+        "--exclude-module",
+        "pytest",
     ]
     if platform.system() == "Windows":
         args += ["--version-file", str(ROOT / "build" / "version_info.txt")]
