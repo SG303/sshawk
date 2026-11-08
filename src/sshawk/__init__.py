@@ -12,7 +12,7 @@ Quick start::
         print(session.send("show clock"))
 """
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 from sshawk.credentials import Credential, credentials_from_env, load_credentials_file  # noqa: E402
 from sshawk.export import export, load_json  # noqa: E402
