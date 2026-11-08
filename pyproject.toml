@@ -1,6 +1,6 @@
 [project]
 name = "sshawk"
-version = "0.2.0"
+version = "0.2.1"
 description = "Collect inventory data (models, serials, firmware, neighbors) from network devices over SSH"
 readme = "README.md"
 license = "MIT"
