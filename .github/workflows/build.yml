@@ -19,9 +19,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
       - run: uv sync --frozen --python 3.13
-      - run: uv run ruff check src tests
+      - run: uv run ruff check
+      - run: uv run ruff format --check
       - run: uv run pytest
 
   build-windows:
@@ -29,14 +32,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
       - run: uv sync --frozen --no-dev --group build --python 3.13
       - run: uv run --no-sync python packaging/build.py
       - name: Smoke test
         run: |
-          dist\sshawk.exe --version
-          dist\sshawk.exe platforms
-        shell: cmd
+          dist/sshawk.exe --version
+          dist/sshawk.exe platforms
+        shell: bash
       - run: Rename-Item dist\sshawk.exe sshawk-windows-x86_64.exe
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -48,6 +53,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - run: packaging/build-linux.sh
       - name: Smoke test on an old distribution
         run: docker run --rm -v "$PWD/dist:/d:ro" debian:10-slim /d/sshawk-linux-x86_64 platforms
@@ -70,8 +77,10 @@ jobs:
       - name: Create release
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
         run: |
           cd dist
           sha256sum sshawk-* > SHA256SUMS.txt
-          gh release create "${{ github.ref_name }}" sshawk-* SHA256SUMS.txt \
-            --repo "${{ github.repository }}" --title "${{ github.ref_name }}" --generate-notes
+          gh release create "$TAG" sshawk-* SHA256SUMS.txt \
+            --repo "$REPO" --title "$TAG" --generate-notes
