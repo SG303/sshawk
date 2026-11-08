@@ -6,7 +6,11 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.13"
 dependencies = [
-    "netmiko>=4.6",
+    "netmiko>=4.8",
+    # paramiko 5 removed SHA-1 host keys and key exchanges (ssh-rsa, diffie-hellman-*-sha1)
+    # without an opt-in, which locks sshawk out of older switches (e.g. Cisco IOS 15.x).
+    # Stay on 4.x until legacy algorithms can be enabled explicitly.
+    "paramiko>=4,<5",
     "ntc-templates>=8.1",
     "openpyxl>=3.1",
     "rich>=13",
@@ -22,6 +26,14 @@ dev = [
 ]
 build = [
     "pyinstaller>=6.10",
+]
+
+[tool.uv]
+# Floors for transitive dependencies with known vulnerabilities in older releases.
+constraint-dependencies = [
+    "cryptography>=50.0.0",
+    "pygments>=2.20.0",
+    "pynacl>=1.6.2",
 ]
 
 [build-system]
