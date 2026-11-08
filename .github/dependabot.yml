@@ -1,12 +1,22 @@
+# Dependabot config (SG303 baseline v1). Weekly on Sunday evening, minor and
+# patch updates grouped into one PR per ecosystem and merged automatically by
+# dependabot-auto-merge.yml once the checks pass. Majors come as separate PRs.
+# The 7-day cooldown skips versions younger than a week; security updates are
+# not delayed.
 version: 2
 updates:
   - package-ecosystem: uv
     directory: /
     schedule:
       interval: weekly
+      day: sunday
+      time: "22:00"
+      timezone: Europe/Zurich
+    cooldown:
+      default-days: 7
     groups:
-      python-dependencies:
-        patterns: ["*"]
+      python:
+        update-types: [minor, patch]
     ignore:
       # paramiko 5 drops SHA-1 host keys/key exchanges needed for older devices (see pyproject.toml).
       - dependency-name: paramiko
@@ -16,6 +26,11 @@ updates:
     directory: /
     schedule:
       interval: weekly
+      day: sunday
+      time: "22:00"
+      timezone: Europe/Zurich
+    cooldown:
+      default-days: 7
     groups:
-      github-actions:
-        patterns: ["*"]
+      actions:
+        update-types: [minor, patch]
