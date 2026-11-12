@@ -6,6 +6,9 @@ ranges, give it one or more credential sets, and get the result as Excel, CSV, J
 an HTML report. The scanner only runs read-only `show`/`display` commands (for Cisco
 with a secret configured, it also enters enable mode).
 
+> [!NOTE]
+> Personal project, built with AI coding agents under my supervision. Review the code carefully before you use it.
+
 Supported platforms (detected automatically):
 
 | Vendor    | OS / platform            | netmiko device type |
@@ -184,6 +187,12 @@ packaging/build-linux.sh                         # Linux binary for old glibc (d
 
 GitHub Actions runs the tests on Linux and Windows and builds both binaries; pushing a
 `v*` tag publishes them as a release.
+
+## Status
+
+Personal project, built with AI coding agents under my supervision. There is
+no support and no stability guarantee; review the code carefully before you
+rely on it. See [LICENSE](LICENSE) for the warranty terms.
 
 ## License
 
